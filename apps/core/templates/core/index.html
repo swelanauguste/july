@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Tickets
+{% endblock title %}
+
+
+
+{% block content %}
+<div class="container-sm">
+    <div class="row">
+        <h3 class="my-2">Tickets</h3>
+    </div>
+       
+        <div class="btn-group my-3">
+            <button class="btn btn-light rounded-0 border-dark btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Sort by: <span class="fw-bolder">Subject</span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        <div class="btn-group my-2">
+            <button class="btn btn-light rounded-0 border-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Status: <span class="fw-bolder">All</span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        
+    <table class="table table-sm table-hover">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">subject</th>
+                <th scope="col">status</th>
+                <th scope="col">timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}

@@ -34,14 +34,16 @@
         {% block title %}
 
         {% endblock title %}
-
+        - FSRA
     </title>
 </head>
 
-<body class="bg-secondary">
+<body>
+
+    {% include 'info-bar.html' %}
+    {% include 'header.html' %}
 
     {% include 'messages.html' %}
-    {% include 'pagination.html' %}
 
     {% block content %}
 

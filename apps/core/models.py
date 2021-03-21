@@ -30,7 +30,9 @@ class Ticket(models.Model):
         choices=CATEGORY_LIST,
         default="please select a category",
     )
-    details = models.CharField(max_length=100, help_text='no more the 100 characters')
+    details = models.TextField(
+        max_length=100, help_text="no more the 100 characters"
+    )
     created_by = models.ForeignKey(
         User, related_name="ticket_created_by", on_delete=models.RESTRICT
     )

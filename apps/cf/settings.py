@@ -147,6 +147,6 @@ SITE_ID = 1
 
 DEFAULT_FROM_EMAIL = "swelan.auguste@govt.lc"
 
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "accounts:login/"
 
 LOGIN_URL = "accounts:profile"

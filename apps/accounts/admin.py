@@ -5,5 +5,11 @@ from .models import Profile
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ['user', 'pk', 'first_name',
-                    'last_name', 'email_confirmed']
+    list_display = [
+        "user",
+        "pk",
+        "first_name",
+        "last_name",
+        "is_admin",
+        "email_confirmed",
+    ]

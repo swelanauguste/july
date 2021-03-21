@@ -40,14 +40,19 @@
 
 <body>
 
-    {% include 'info-bar.html' %}
-    {% include 'header.html' %}
 
     {% include 'messages.html' %}
+    <div class="row mt-5">
+        <div class="col-lg-2">
+            {% include 'header.html' %}
+        </div>
+        <div class="col">
+            {% block content %}
 
-    {% block content %}
+            {% endblock content %}
+        </div>
+    </div>
 
-    {% endblock content %}
 
     <script>
         feather.replace()

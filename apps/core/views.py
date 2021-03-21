@@ -25,7 +25,7 @@ class TicketCreate(CreateView):
         context = super().get_context_data(**kwargs)
         context["my_ticket_list"] = Ticket.objects.filter(
             created_by=self.request.user
-        ).order_by('-created')
+        ).order_by("-created")
         return context
 
     def form_valid(self, form):
@@ -44,6 +44,9 @@ class TicketDetailView(FormMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["comments"] = self.object.comments.all()
+        context["my_ticket_list"] = Ticket.objects.filter(
+            created_by=self.request.user
+        ).order_by("-created")
         return context
 
     def post(self, request, *args, **kwargs):

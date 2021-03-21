@@ -3,34 +3,34 @@
 {% load crispy_forms_tags %}
 {% load humanize %}
 {% block title %}
-- {{ object.pk }}
+{{ object.pk }}
 {% endblock title %}
 
 
 {% block content %}
 
 <div class="container">
-    <div class="row mt-3">
-        <div class="col border-dark border rounded-0 p-4 m-1">
-
-            <div class="border border-dark rounded-0 mt-3 py-1"
-                >
-                <div class="fw-bolder text-center">
-                    Ticket current status: <span
-                        class="text-dark fw-bolder fs-5">
-                        {{ object.status }}</span>
-                </div>
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="border-dark border-bottom mb-3">
+                <h4 class="">{{ object.details }}</h4>
+                <p class="small text-muted">
+                    created by: {{ object.created|naturaltime }}
+                    by {{ object.created_by }}
+                </p>
             </div>
-            <div class="my-2">
-                <a href="#">Close ticket</a>
+            <div class="col">
+                <form method="post">
+                    {{ form|crispy }}
+                    {% csrf_token %}
+                    <div class="d-grid gap-2">
+                        <input type="submit"
+                            class="btn btn-outline-dark my-4"
+                            value="post comment">
+                    </div>
+                </form>
             </div>
-            <p class="small text-muted">
-                created by: {{ object.created|naturaltime }} by {{ object.created_by }}
-            </p>
-            <p class="border-dark border text-center py-1 fw-bolder">{{ object.details }}
-            </p>
-            {{ object.body|linebreaks }}
-            <div class="small container border border-dark">
+            <div class="small container">
                 {% with comments.count as total_comments %}
                 <p class="py-3">
                     {{ total_comments }}
@@ -43,10 +43,11 @@
                         <span class="small text-muted">
                             Comment {{ forloop.counter }} by
                             {{ comment.created_by }}
-                             on {{ comment.created|naturaltime }}
+                            on {{ comment.created|naturaltime }}
                         </span>
                     </p>
-                    <div class="container">{{ comment.comment|linebreaks }}</div>
+                    <div class="container">{{ comment.comment|linebreaks }}
+                    </div>
                 </div>
                 {% empty %}
                 <div class="container">
@@ -59,16 +60,14 @@
                 {% else %}
             </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-12 border-dark border rounded-0 p-4 m-1">
-            <form method="post">
-                {{ form|crispy }}
-                {% csrf_token %}
-                <div class="d-grid gap-2">
-                    <input type="submit"
-                        class="btn btn-dark rounded-0 my-4"
-                        value="Add comment">
-                </div>
-            </form>
+        <div class="col-lg-4">
+            <div class="mx-4">
+                {% for object in my_ticket_list %}
+                <a href="">
+                    {{ object.details|linebreaks }}
+                </a>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>

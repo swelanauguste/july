@@ -8,6 +8,7 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=200, null=True, blank=True)
     last_name = models.CharField(max_length=200, null=True, blank=True)
     email_confirmed = models.BooleanField(default=False)
+    is_admin = models.BooleanField(default=False)
 
     def get_absolute_url(self):
         return reverse('accounts:profile', kwargs={'pk': self.pk})

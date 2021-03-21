@@ -7,62 +7,20 @@
 New Ticket
 {% endblock title %}
 
-
-
 {% block content %}
-<div class="container-sm">
-    <div class="row">
-        <h3 class="my-2">New Ticket</h3>
-    </div>
-
-
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <form action=""
-                    method="post">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <div class="col-12 d-grid">
-                        <button class="btn btn-dark rounded-0 mt-3"
-                            type="submit">Create Ticket</button>
-                    </div>
-                </form>
+<div class="d-flex justify-content-start">
+    <div class="col-lg-3 mx-5">
+        <form action=""
+            method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="col-12 d-grid">
+                <button class="btn btn-outline-dark my-5"
+                    type="submit">Create Ticket</button>
             </div>
-            <div class="col">
-                <div class="row">
-                    <h3 class="my-2 text-center">My Tickets</h3>
-                </div>
-                <div class="row">
-                    <table class="table table-sm table-hover text-end">
-                      
-                        <tbody>
-                            {% for ticket in my_ticket_list %}
-
-                            <tr>
-                                <th scope="row">
-                                    <a class="text-decoration-none text-dark" href="{{ ticket.get_absolute_url }}">
-                                    {{ticket.details}}
-                                </a>
-                                </th>
-                            </tr>
-                            {% empty %}
-
-                            <p class="text-center mt-5">Your have no tickets
-                            </p>
-                            {% endfor %}
-                          
-                        </tbody>
-                    </table>
-                </div>
-
-
-
-            </div>
-        </div>
+        </form>
     </div>
-
-
 </div>
+
 
 {% endblock content %}

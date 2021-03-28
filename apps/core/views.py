@@ -25,7 +25,7 @@ class TicketCreate(CreateView):
         context = super().get_context_data(**kwargs)
         context["my_ticket_list"] = Ticket.objects.filter(
             created_by=self.request.user
-        ).order_by("-created")
+        ).order_by("-created").order_by('-updated')
         return context
 
     def form_valid(self, form):

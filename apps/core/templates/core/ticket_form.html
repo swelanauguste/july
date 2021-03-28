@@ -20,6 +20,33 @@ New Ticket
             </div>
         </form>
     </div>
+    <div class="col-lg-4">
+        {% for object in my_ticket_list %}
+        <a class="text-decoration-none text-dark"
+            href="{{object.get_absolute_url}}">
+            <div class="alert alert-light p-0 shadow-lg"
+                role="alert">
+                <div class="row">
+                    <div class="col-1">
+                        <div style="width: 10px; height:100%;"
+                            class="bg-success"></div>
+
+                    </div>
+                    <div class="col">
+                        <div class="p-2">
+                            {{ object.details|linebreaks }}
+                            <div class="text-muted text-end small fst-italic">
+                                created {{object.created}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </a>
+        {% endfor %}
+
+    </div>
 </div>
 
 

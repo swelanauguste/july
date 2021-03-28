@@ -6,7 +6,6 @@
 {{ object.pk }}
 {% endblock title %}
 
-
 {% block content %}
 
 <div class="container">
@@ -14,12 +13,12 @@
         <div class="col-lg-5">
             <div class="border-dark border-bottom mb-3">
                 <h4 class="">{{ object.details }}</h4>
-                <p class="small text-muted">
+                <p class="small text-muted text-end">
                     created by: {{ object.created|naturaltime }}
                     by {{ object.created_by }}
                 </p>
             </div>
-            <div class="col">
+            <div class="col container">
                 <form method="post">
                     {{ form|crispy }}
                     {% csrf_token %}
@@ -61,13 +60,31 @@
             </div>
         </div>
         <div class="col-lg-4">
-            <div class="mx-4">
-                {% for object in my_ticket_list %}
-                <a href="">
-                    {{ object.details|linebreaks }}
-                </a>
-                {% endfor %}
-            </div>
+            {% for object in my_ticket_list %}
+            <a class="text-decoration-none text-dark"
+                href="{{object.get_absolute_url}}">
+                <div class="alert alert-light p-0 shadow-lg"
+                    role="alert">
+                    <div class="row">
+                        <div class="col-1">
+                            <div style="width: 10px; height:100%;"
+                                class="bg-success"></div>
+    
+                        </div>
+                        <div class="col">
+                            <div class="p-2">
+                                {{ object.details|linebreaks }}
+                                <div class="text-muted text-end small fst-italic">
+                                    created {{object.created}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </a>
+            {% endfor %}
+    
         </div>
     </div>
 </div>
